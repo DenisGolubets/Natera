@@ -26,6 +26,5 @@ public class DirectedGraphManager<V> implements GraphManager<V> {
     adjacencyPairs.computeIfAbsent(targetVertex, k -> new LinkedList<>());
 
     adjacencyPairs.get(sourceVertex).add(targetVertex);
-    adjacencyPairs.get(targetVertex).add(sourceVertex);
   }
 }
