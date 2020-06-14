@@ -15,5 +15,4 @@ public interface GraphType {
    * @return see description
    */
   boolean isUndirected();
-
 }

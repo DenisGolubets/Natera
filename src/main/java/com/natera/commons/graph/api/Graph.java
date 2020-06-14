@@ -1,34 +1,20 @@
 package com.natera.commons.graph.api;
 
-import java.util.Set;
-
-public interface Graph<V, E> {
+public interface Graph<V> {
 
 
   /**
-   * Creates a new vertex in this graph and returns it.
+   * Add a new vertex in this graph.
+   *
+   * @param vertex - vertex to be added to this graph
    */
-  V addVertex();
+  void addVertex(V vertex);
 
   /**
-   * Creates a new edge in this graph, and returns the created edge.
+   * Creates a new edge in this graph.
    *
    * @param sourceVertex source vertex of the edge.
    * @param targetVertex target vertex of the edge.
    */
-  E addEdge(V sourceVertex, V targetVertex);
-
-  /**
-   * Returns a set of the vertices contained in this graph.
-   *
-   * @return see description
-   */
-  Set<V> vertexSet();
-
-  /**
-   * Returns a set of the edges contained in this graph.
-   *
-   * @return see description
-   */
-  Set<E> edgeSet();
+  void addEdge(V sourceVertex, V targetVertex);
 }

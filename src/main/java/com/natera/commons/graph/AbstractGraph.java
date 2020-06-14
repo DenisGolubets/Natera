@@ -1,40 +1,32 @@
 package com.natera.commons.graph;
 
+
 import com.natera.commons.graph.api.Graph;
+import com.natera.commons.graph.api.GraphManager;
+import com.natera.commons.graph.api.GraphType;
+import com.natera.commons.graph.manager.GraphManagerFactory;
 
-public abstract class AbstractGraph<V, E> implements Graph {
+public abstract class AbstractGraph<V> implements Graph<V> {
+
+  private GraphType type;
+  private GraphManager<V> graphManager;
 
 
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if ((obj == null) || (getClass() != obj.getClass())) {
-      return false;
-    }
-
-    @SuppressWarnings("unchecked")
-    AbstractGraph g = (AbstractGraph) obj;
-
-    if (!vertexSet().equals(g.vertexSet())) {
-      return false;
-    }
-    if (edgeSet().size() != g.edgeSet().size()) {
-      return false;
-    }
-
-    return true;
+  public AbstractGraph(GraphType type) {
+    this.type = type;
+    graphManager = GraphManagerFactory.getManagerByType(type);
   }
 
   @Override
-  public int hashCode() {
-    int vertexHash = 31 * vertexSet().hashCode();
-    int edgesHash = 31 * edgeSet().hashCode();
-    for (Object o : edgeSet()) {
-      edgesHash = 31 * o.hashCode();
+  public void addVertex(V vertex) {
+    if (vertex == null) {
+      throw new NullPointerException("Vertex can be null");
     }
+    graphManager.addVertex(vertex);
+  }
 
-    return vertexHash + edgesHash;
+  @Override
+  public void addEdge(V sourceVertex, V targetVertex) {
+    graphManager.addEdge(sourceVertex, targetVertex);
   }
 }
