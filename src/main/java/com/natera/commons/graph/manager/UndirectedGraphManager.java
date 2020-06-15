@@ -2,10 +2,7 @@ package com.natera.commons.graph.manager;
 
 import com.natera.commons.graph.api.GraphManager;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class UndirectedGraphManager<V> implements GraphManager<V> {
 
@@ -26,5 +23,12 @@ public class UndirectedGraphManager<V> implements GraphManager<V> {
     adjacencyPairs.computeIfAbsent(targetVertex, k -> new LinkedList<>());
 
     adjacencyPairs.get(sourceVertex).add(targetVertex);
-    adjacencyPairs.get(targetVertex).add(sourceVertex);  }
+    adjacencyPairs.get(targetVertex).add(sourceVertex);
+  }
+
+  @Override
+  public List<V> getAdjVertices(V vertex) {
+    List<V> result = adjacencyPairs.get(vertex);
+    return result == null ? Collections.emptyList() : result;
+  }
 }

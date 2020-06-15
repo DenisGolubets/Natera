@@ -19,5 +19,4 @@ public final class GraphManagerFactory {
     throw new UnsupportedOperationException(
         String.format("Graph type: %s not supported", graphType));
   }
-
 }

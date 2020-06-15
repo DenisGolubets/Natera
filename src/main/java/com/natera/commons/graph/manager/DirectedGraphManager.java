@@ -2,10 +2,7 @@ package com.natera.commons.graph.manager;
 
 import com.natera.commons.graph.api.GraphManager;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DirectedGraphManager<V> implements GraphManager<V> {
 
@@ -23,8 +20,12 @@ public class DirectedGraphManager<V> implements GraphManager<V> {
   @Override
   public void addEdge(V sourceVertex, V targetVertex) {
     adjacencyPairs.computeIfAbsent(sourceVertex, k -> new LinkedList<>());
-    adjacencyPairs.computeIfAbsent(targetVertex, k -> new LinkedList<>());
-
     adjacencyPairs.get(sourceVertex).add(targetVertex);
+  }
+
+  @Override
+  public List<V> getAdjVertices(V vertex) {
+    List<V> result = adjacencyPairs.get(vertex);
+    return result == null ? Collections.emptyList() : result;
   }
 }
