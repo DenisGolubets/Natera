@@ -6,7 +6,7 @@ import java.util.*;
 
 public class UndirectedGraphManager<V> implements GraphManager<V> {
 
-  private Map<V, List<V>> adjacencyPairs;
+  protected Map<V, List<V>> adjacencyPairs;
 
   public UndirectedGraphManager() {
     adjacencyPairs = new HashMap<>();

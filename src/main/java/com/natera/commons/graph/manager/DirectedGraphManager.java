@@ -6,7 +6,7 @@ import java.util.*;
 
 public class DirectedGraphManager<V> implements GraphManager<V> {
 
-  private Map<V, List<V>> adjacencyPairs;
+  protected Map<V, List<V>> adjacencyPairs;
 
   public DirectedGraphManager() {
     adjacencyPairs = new HashMap<>();
