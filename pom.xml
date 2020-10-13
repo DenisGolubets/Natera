@@ -12,7 +12,7 @@
     <properties>
         <project.source.compile.level>1.8</project.source.compile.level>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
     </properties>
 
     <name>Natera common</name>
